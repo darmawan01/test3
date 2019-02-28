@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test 3</title>
+</head>
+<body>
+    <div class="form">
+        <div class="input-group">
+            <p>Inputkan Kata</p>
+            <input type="text" id="txt" placeholder="ex. saya" onchange="resolve(this)"/>
+        </div>
+
+        <div class="view">
+            <p id="result">hasil: ......</p>
+        </div>
+    </div>    
+</body>
+
+<script>
+    
+    const result = document.getElementById("result")
+
+    function resolve(txt){
+
+        let word = {
+            "text": txt.value
+        }
+
+        let request = new Request('http://localhost', {method: 'POST', body: JSON.stringify(word)})
+
+        fetch(request)
+            .then(response => response.json())
+            .then(data => {
+                let val = data.text? data.text: "......"
+                
+                result.innerHTML = "hasil: " +  val
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+</script>
+</html>
