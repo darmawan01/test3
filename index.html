@@ -5,16 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test 3</title>
+
+    <style>
+        .form {
+            margin-left: 420px;
+            width: 30%;
+            padding: 20px;
+            margin-top: 120px;
+            color: white;
+            background-color: tomato;
+            border-radius: 10px;
+        }
+        h2{
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            font-size: 18px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+        }
+        .view {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="form">
         <div class="input-group">
-            <p>Inputkan Kata</p>
+            <h2>Mengurutkan Karakter</h2>
             <input type="text" id="txt" placeholder="ex. saya" onchange="resolve(this)"/>
         </div>
 
         <div class="view">
-            <p id="result">hasil: ......</p>
+            <u><h2 id="result">.......</h2></u>
         </div>
     </div>    
 </body>
@@ -36,7 +61,7 @@
             .then(data => {
                 let val = data.text? data.text: "......"
                 
-                result.innerHTML = "hasil: " +  val
+                result.innerHTML = val
             })
             .catch(error => {
                 console.error(error);
